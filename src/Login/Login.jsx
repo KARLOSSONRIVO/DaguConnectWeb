@@ -1,48 +1,58 @@
 import { useState } from "react";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import "./LoginStyle.css";
 
-const Login = () =>{
-    const [username, Setusername] = useState("");
-    const [password, Setpassword] = useState("");
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(false);
 
-    return(
-        <>
-         
-       <form>
-            <h2>LOG IN</h2>
-            <label for ="Username" >Username</label>
-            <input type="text"
-            id="username" 
-            name="username"
-            value={username} 
-            onChange={(e)=>Setusername(e.target.value)} required/>
-            
-            <label for="Password">Password</label>
-            <input type="password"
-            id="password" 
-            name="password" 
+  const toggleVisibility = () => {
+    setVisible(!visible);
+  };
+
+  return (
+    <>
+      <form>
+        <h2 id="loginHeader">LOG IN</h2>
+
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+
+        <label htmlFor="password">Password</label>
+        <div className="password-input">
+          <input
+            type={visible ? "text" : "password"}
+            id="password"
+            name="password"
             value={password}
-            onChange={(e)=>Setpassword(e.target.value)} required/>
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <span
+            className="visibility-toggle"
+            onClick={toggleVisibility}
+          >
+            {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+          </span>
+        </div>
 
-            <button type="submit" >
-                        Login
-            </button>
+        <button type="submit">Login</button>
+      </form>
 
-        </form>
-        <div className="purple-circle"> {}
-        </div>
-        <div className="orange-circle"> {}
-        </div>
-        <div className="lightorange1-circle"> {}
-        </div>
-        <div className="lightorange2-circle"> {}
-        </div>
-       
-
-        </>
-    )
-}
- 
-    
+      <div className="purple-circle" />
+      <div className="orange-circle" />
+      <div className="lightorange1-circle" />
+      <div className="lightorange2-circle" />
+    </>
+  );
+};
 
 export default Login;
