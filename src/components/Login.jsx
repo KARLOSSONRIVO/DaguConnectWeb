@@ -1,19 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import "./LoginStyle.css";
+import { AuthContext } from "../AuthContext/AuthContext";
+import "./CSS/LoginStyle.css";
+import { useNavigate } from "react-router-dom";
+import { login } from "../services/api"; 
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const {login: loginUser} = useContext(AuthContext);
+  const [credentials, setCredentials] = useState({username: "", password: ""})
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
     setVisible(!visible);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await login(credentials);
+      console.log("Login successful, updating context:", data); // Log data
+      loginUser(data.token);
+      console.log("Navigating to /Dashboard");
+      navigate("/Home");
+    } catch (error) {
+       console.error("log in failed",error);
+    }
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2 id="loginHeader">LOG IN</h2>
 
         <label htmlFor="username">Username</label>
@@ -21,8 +38,8 @@ const Login = () => {
           type="text"
           id="username"
           name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={credentials.username}
+          onChange={(e) => setCredentials({...credentials, username: e.target.value})}
           required
         />
 
@@ -32,8 +49,8 @@ const Login = () => {
             type={visible ? "text" : "password"}
             id="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={credentials.password}
+            onChange={(e) => setCredentials({...credentials, password: e.target.value})}
             required
           />
           <span
