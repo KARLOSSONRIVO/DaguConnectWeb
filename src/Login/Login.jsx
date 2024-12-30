@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import "./LoginStyle.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
+  
 
   const toggleVisibility = () => {
-    setVisible(!visible);
+    setVisible(!visible); 
+  };
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    navigate("/dashboard")
   };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2 id="loginHeader">LOG IN</h2>
 
         <label htmlFor="username">Username</label>
