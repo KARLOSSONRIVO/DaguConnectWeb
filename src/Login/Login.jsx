@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import "./LoginStyle.css";
+import { AuthContext } from "../AuthContext/Authcontext";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [visible, setVisible] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(null)
+  const [visible, setVisible] = useState(false)
+  const {login, loading } = useContext(AuthContext)
+  const naviate = useNavigate()
+
   const navigate = useNavigate();
   
 
   const toggleVisibility = () => {
     setVisible(!visible); 
   };
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
-    navigate("/dashboard")
+    try{
+      await login(username, password)
+      navigate("/dashboard")
+    }catch(err){
+      setError(err);
+    }
+    
   };
 
   return (
@@ -51,7 +62,7 @@ const Login = () => {
           </span>
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit" disabled= {loading}>{loading ? 'Logging in...' : 'Login'}</button>
       </form>
 
       <div className="purple-circle" />
