@@ -4,8 +4,7 @@ import { AuthContext } from "../AuthContext/Authcontext";
 
 
 const PrivateRoute = () => {
-    const {token } = useContext(AuthContext)
-    console.log('Token in PrivateRoute:', token); // Debugging line
+    const { token } = useContext(AuthContext)
     return token ? <Outlet/> : <Navigate to= "/"/>
 }
 

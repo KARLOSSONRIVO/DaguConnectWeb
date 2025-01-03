@@ -10,8 +10,6 @@ const Login = () => {
   const [error, setError] = useState(null)
   const [visible, setVisible] = useState(false)
   const {login, loading } = useContext(AuthContext)
-  const naviate = useNavigate()
-
   const navigate = useNavigate();
   
 
