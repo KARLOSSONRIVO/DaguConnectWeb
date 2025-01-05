@@ -2,7 +2,7 @@ import { useState,useContext } from "react";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import "./LoginStyle.css";
-import { AuthContext } from "../AuthContext/Authcontext";
+import { AuthContext } from "../AuthContext/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("")

@@ -1,0 +1,77 @@
+.Sidebar {
+    width: 50px;  
+    height: 100vh;
+    background-color: #252533;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.5s ease; 
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.Sidebar.expanded {
+    width: 250px; 
+}
+
+.SidebarList {
+    list-style-type: none;
+    padding: 0;
+}
+.SidebarList  #active {
+    background-color: #F2A333;  /* Change background color when active */
+}
+.row {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.row:hover {
+    background-color: #555; 
+}
+
+.icon {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.title {
+    display: none; 
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.title.show {
+    display: block;  
+}
+.logo img{
+   
+    width: 50px;
+    height: 50px;
+
+}
+.logo_title {
+    display: flex;
+    flex-direction: row;
+    align-items: start; /* Align vertically */
+    padding-left: 15px;  /* Optional: adjust padding if needed */
+}
+
+.logo_title h1 {
+    font-size: 28px;     
+    color: white;       
+    font-weight: bold;  
+}
+.row1 {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: white;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
