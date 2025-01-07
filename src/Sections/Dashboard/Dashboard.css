@@ -1,10 +1,102 @@
-.Dashboard{
-    color: rgb(0, 0, 0);
+.Container {
+    display: grid;
+    width: 97.5%;
+    height: 50vh;
+    background-color: #F9F9FB;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    margin-left: 2.5%;
+    box-sizing: border-box;
+}
+
+.item1 {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    height: 10vh;
+    justify-content: space-between;
+}
+
+.search {
+    width: 20%;
+    border-radius: 50px;
+    border: 1px solid #3F51B7;
+    outline: none;
+    align-self: center;
+    margin-left: 10%;
+}
+
+.notification-icon {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.item2 {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    height: 90vh;
+    background-color: bisque;
+    grid-template-columns: auto auto;
+    box-sizing: border-box;
+}
+
+.Overview {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.Overview h3 {
+    margin-top: 50px; 
+    margin-left: 50px; 
+    font-size: 1.5rem;
+    color: #6D6D6D;
+
+}
+.Admin {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: white;
+    height: 12vh;
+    border-radius: 25px;
+
+    width: 90%;
+    margin: auto;
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 10px;
+}
+
+.admin_pfp {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 5%;
+    margin-left: 20%;
+    
+}
+.admin_pfp svg {
+    font-size: 40px; 
+}
+
+.admin-info {
+    display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    background-color: #F9F9FB;
+    align-items: flex-start; 
+    justify-content: center;
+}
+
+.admin-info h2 {
+    margin: 0;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.admin-info p {
+    margin: 0;
+    color: #6D6D6D;
+    font-size: 1.2rem;
+    text-align: left;
 }
